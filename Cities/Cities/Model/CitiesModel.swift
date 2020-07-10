@@ -10,7 +10,7 @@ import Foundation
 
 struct CitiesModel : Codable {
     let country : String?
-    let name : String?
+    let name : String
     let _id : Int?
     let coord : Coord?
 
@@ -25,7 +25,7 @@ struct CitiesModel : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         country = try values.decodeIfPresent(String.self, forKey: .country)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
+        name = try values.decodeIfPresent(String.self, forKey: .name) ?? ""
         _id = try values.decodeIfPresent(Int.self, forKey: ._id)
         coord = try values.decodeIfPresent(Coord.self, forKey: .coord)
     }

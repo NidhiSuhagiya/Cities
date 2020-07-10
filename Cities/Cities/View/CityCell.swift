@@ -27,11 +27,13 @@ class CityCell: UITableViewCell {
         didSet {
             guard let cityDetail = cityData else { return  }
             
-            if let cityName = cityDetail.name, let country = cityDetail.country {
-                titleLbl.text = cityName + ", " + country
+            if let country = cityDetail.country {
+                titleLbl.text = cityDetail.name + ", " + country
             }
             if let coordinates = cityDetail.coord {
-                latLongLbl.text = "lat: \(String(describing: coordinates.lat)), long: \(String(describing: coordinates.lon))"
+                if let latitude = coordinates.lat, let long = coordinates.lon {
+                    latLongLbl.text = "lat: \(latitude), long: \(long)"
+                }
             }
         }
     }

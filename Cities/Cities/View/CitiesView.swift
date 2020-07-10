@@ -9,12 +9,17 @@
 import Foundation
 import UIKit
 
+protocol CityDelegate: class {
+    func displaySelectedCityOnMap(cityInfo: CitiesModel)
+}
+
 class CitiesView: UIView {
     
     var citiesArr = [CitiesModel]()
+    weak var delegate: CityDelegate?
     
     lazy var tableView: UITableView = {
-       let table = UITableView()
+        let table = UITableView()
         table.delegate = self
         table.dataSource = self
         table.showsVerticalScrollIndicator = false
@@ -27,7 +32,7 @@ class CitiesView: UIView {
     }()
     
     lazy var searchBar: UISearchBar = {
-       let searchBar = UISearchBar()
+        let searchBar = UISearchBar()
         searchBar.barStyle = .black
         searchBar.tintColor = UIColor.black
         searchBar.delegate = self
@@ -90,7 +95,7 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return citiesArr.count
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -99,6 +104,12 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityCell
         cell.cityData = citiesArr[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let currentDelegate = delegate {
+            currentDelegate.displaySelectedCityOnMap(cityInfo: citiesArr[indexPath.row])
+        }
     }
 }
 
