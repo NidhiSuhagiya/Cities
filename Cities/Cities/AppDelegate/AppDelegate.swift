@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         if #available(iOS 13.0, *) {
-            print("iOS version is above 13")
+            PrintMessage.printToConsole(message: "iOS version is above 13")
         } else {
             // Override point for customization after application launch.
             let homeVC = CitiesVC()

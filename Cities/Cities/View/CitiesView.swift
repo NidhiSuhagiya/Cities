@@ -18,17 +18,34 @@ class CitiesView: UIView {
     
     var citiesArr = [CitiesModel]()
     var searchCitiesArr = [CitiesModel]()
-
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = .whiteLarge
+        loadingIndicator.color = UIColor.systemPink
+        loadingIndicator.startAnimating()
+        return loadingIndicator
+    }()
+    
     weak var delegate: CityDelegate?
     var isSearch: Bool = false
-
+    
+    lazy var noDataFoundLbl: UILabel = {
+        let noDataLbl = UILabel()
+        noDataLbl.text = "No data found."
+        noDataLbl.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        noDataLbl.textAlignment = .center
+        return noDataLbl
+    }()
+    
     lazy var tableView: UITableView = {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
         table.showsVerticalScrollIndicator = false
         table.showsHorizontalScrollIndicator = false
-        table.separatorStyle = .singleLine
+        table.separatorStyle = .none
         table.separatorInset = .zero
         table.separatorColor = UIColor.gray
         table.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 10)
@@ -40,6 +57,7 @@ class CitiesView: UIView {
         searchBar.barStyle = .black
         searchBar.tintColor = UIColor.white
         searchBar.delegate = self
+        searchBar.isUserInteractionEnabled = false
         return searchBar
     }()
     
@@ -59,6 +77,9 @@ class CitiesView: UIView {
     func setUI() {
         self.addSearchBar()
         self.addTableView()
+        self.addSubview(activityIndicator)
+        activityIndicator.center = self.center
+        self.addNodataLbl()
     }
     
     func addSearchBar() {
@@ -66,7 +87,7 @@ class CitiesView: UIView {
             textField.textColor = UIColor.white
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         }
-
+        
         self.addSubview(searchBar)
         self.setUpSearchBarConstraints()
     }
@@ -76,6 +97,12 @@ class CitiesView: UIView {
         tableView.contentInset = .zero
         self.setUpTableViewConstraints()
         tableView.register(CityCell.self, forCellReuseIdentifier: "cityCell")
+    }
+    
+//    TODO:- Resolve no data found issue
+    func addNodataLbl() {
+        self.addSubview(noDataFoundLbl)
+        noDataFoundLbl.center = self.center
     }
 }
 
@@ -99,12 +126,17 @@ extension CitiesView {
     }
 }
 
+//#MARK:- Tableview delegate and datasource methods
 extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
+            tableView.separatorStyle = (searchCitiesArr.count > 0) ? .singleLine : .none
+            noDataFoundLbl.isHidden = searchCitiesArr.count > 0
             return searchCitiesArr.count
         } else {
+            tableView.separatorStyle = (citiesArr.count > 0) ? .singleLine : .none
+            noDataFoundLbl.isHidden = citiesArr.count > 0
             return citiesArr.count
         }
     }
@@ -127,12 +159,14 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//#MARK:- Search bar delegate
 extension CitiesView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("search text:- \(searchText)")
+        PrintMessage.printToConsole(message: "search text:- \(searchText)")
         guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
             self.isSearch = false
+            self.searchCitiesArr = []
             self.tableView.reloadData()
             return
         }
@@ -143,7 +177,9 @@ extension CitiesView: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.endEditing(true)
         self.isSearch = false
+        self.searchCitiesArr = []
         self.tableView.reloadData()
     }
 }

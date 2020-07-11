@@ -22,7 +22,6 @@
 		4C21089F24B7795000E688A0 /* JsonServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21089E24B7795000E688A0 /* JsonServices.swift */; };
 		4C2108A124B798B900E688A0 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2108A024B798B900E688A0 /* CityCell.swift */; };
 		4C2108A424B7AA0F00E688A0 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2108A324B7AA0F00E688A0 /* GlobalFunctions.swift */; };
-		4CD2201624B8D5810028AB66 /* CityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2201524B8D5810028AB66 /* CityMapView.swift */; };
 		4CD2201924B8DA630028AB66 /* CityMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2201824B8DA630028AB66 /* CityMapVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		4C21089E24B7795000E688A0 /* JsonServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonServices.swift; sourceTree = "<group>"; };
 		4C2108A024B798B900E688A0 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		4C2108A324B7AA0F00E688A0 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
-		4CD2201524B8D5810028AB66 /* CityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMapView.swift; sourceTree = "<group>"; };
 		4CD2201824B8DA630028AB66 /* CityMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMapVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,7 +169,6 @@
 			children = (
 				4C21089624B772FD00E688A0 /* CitiesView.swift */,
 				4C2108A024B798B900E688A0 /* CityCell.swift */,
-				4CD2201524B8D5810028AB66 /* CityMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 				4CD2201924B8DA630028AB66 /* CityMapVC.swift in Sources */,
 				4C21089724B772FD00E688A0 /* CitiesView.swift in Sources */,
 				4C21086224B7726A00E688A0 /* CitiesVC.swift in Sources */,
-				4CD2201624B8D5810028AB66 /* CityMapView.swift in Sources */,
 				4C21089524B772F100E688A0 /* CitiesViewModel.swift in Sources */,
 				4C21085E24B7726A00E688A0 /* AppDelegate.swift in Sources */,
 				4C2108A124B798B900E688A0 /* CityCell.swift in Sources */,

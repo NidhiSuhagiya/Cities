@@ -70,7 +70,7 @@ extension CitiesVC: DisplayCityDelegate {
         if Date().timeIntervalSince(previousRun) > minInterval {
             citiesView.isSearch = true
             previousRun = Date()
-            print("interval:- \(Date().timeIntervalSince(previousRun))")
+            PrintMessage.printToConsole(message: "interval:- \(Date().timeIntervalSince(previousRun))")
             fetchSearchVideos(searchStr: searchStr)
         }
     }

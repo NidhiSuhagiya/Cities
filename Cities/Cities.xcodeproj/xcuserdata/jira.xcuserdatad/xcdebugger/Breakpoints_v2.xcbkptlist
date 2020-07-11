@@ -14,8 +14,8 @@
             filePath = "Cities/View/CitiesView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "Cities/ViewModel/CitiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "fetchCityList()"
             landmarkType = "7">
             <Locations>
@@ -238,26 +238,10 @@
             filePath = "Cities/ViewModel/CitiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "citiesArr"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0D477A53-A935-4EE9-A91E-624CAC29330E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cities/ViewModel/CitiesViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "sortCityArr(cityArr:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -270,8 +254,8 @@
             filePath = "Cities/ViewModel/CitiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "sortCitiesByAlphbets(a:start:end:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +270,8 @@
             filePath = "Cities/ViewModel/CitiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "sortCitiesByAlphbets(a:start:end:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,8 +286,8 @@
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "setUp()"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,8 +302,8 @@
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "tearDown()"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,89 +318,9 @@
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "searchCitiesPerformanceExample()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "15E34D3E-E161-4B72-88D6-8916902EFAEA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CitiesTests/CitiesTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "testPerformanceExample()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "15E34D3E-E161-4B72-88D6-8916902EFAEA - 8760e0838794f5cf"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CitiesTests.CitiesTests.testPerformanceExample() -&gt; ()"
-                  moduleName = "CitiesTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/CitiesTests/CitiesTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "940">
-               </Location>
-               <Location
-                  uuid = "15E34D3E-E161-4B72-88D6-8916902EFAEA - c0d763061bcc52db"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in CitiesTests.CitiesTests.testPerformanceExample() -&gt; ()"
-                  moduleName = "CitiesTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/CitiesTests/CitiesTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9E1C285F-038E-49A1-9507-6B43F822BADB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CitiesTests/CitiesTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "testPerformanceExample()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F9561FEA-E3DB-4BDD-940C-0E7DB312BB1F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CitiesTests/CitiesTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "searchCitiesPerformanceExample()"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "searchCitiesPerformanceExample(searchStr:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -430,8 +334,8 @@
             filePath = "Cities/ViewModel/CitiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "searchCountryByText(searchStr:)"
             landmarkType = "7">
             <Locations>
@@ -471,63 +375,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8A58A9B0-4E9E-49D1-AE9A-A38190063978"
+            uuid = "4A96CC13-88F8-4C38-97AF-722B4FB36714"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "testPerformanceExample()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "046C863A-F984-4EA6-BAFD-A4BD9D88B350"
+            uuid = "BF3C6A76-2E89-417E-9DFC-9DDD314743CE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "testPerformanceExample()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B163F5F-092D-495A-91CF-CEAE2C3F40FB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CitiesTests/CitiesTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "testPerformanceExample()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "046C863A-F984-4EA6-BAFD-A4BD9D88B350 - 1579dc601f2d5073"
+                  uuid = "5B163F5F-092D-495A-91CF-CEAE2C3F40FB - e5af0cc81a058860"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CitiesTests.CitiesTests.binarySearch(inputArray: Swift.Array&lt;Cities.CitiesModel&gt;, searchValue: Swift.String) -&gt; Swift.Array&lt;Cities.CitiesModel&gt;"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Cities.CitiesModel&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in CitiesTests.CitiesTests.testPerformanceExample() -&gt; ()"
                   moduleName = "CitiesTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/CitiesTests/CitiesTests.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "346">
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "320">
                </Location>
                <Location
-                  uuid = "046C863A-F984-4EA6-BAFD-A4BD9D88B350 - 1579dc601f2d5073"
+                  uuid = "5B163F5F-092D-495A-91CF-CEAE2C3F40FB - 32b812a0bd3f4b9c"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CitiesTests.CitiesTests.binarySearch(inputArray: Swift.Array&lt;Cities.CitiesModel&gt;, searchValue: Swift.String) -&gt; Swift.Array&lt;Cities.CitiesModel&gt;"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Array&lt;Cities.CitiesModel&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in CitiesTests.CitiesTests.testPerformanceExample() -&gt; ()"
                   moduleName = "CitiesTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/CitiesTests/CitiesTests.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "400">
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -535,144 +455,240 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "05B91308-2516-42F0-ACCC-CCC5B1458ECE"
+            uuid = "67218893-D7B5-4C44-9E16-D9F805947D8B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cities/ViewModel/CitiesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "searchCountryByText(searchStr:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "67218893-D7B5-4C44-9E16-D9F805947D8B - 942c6c7d3ec4863f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cities.CitiesViewModel.searchCountryByText(searchStr: Swift.String) -&gt; ()"
+                  moduleName = "Cities"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/Cities/ViewModel/CitiesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "67218893-D7B5-4C44-9E16-D9F805947D8B - e5d01df2bc20c452"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Cities.CitiesModel) -&gt; Swift.Bool in Cities.CitiesViewModel.searchCountryByText(searchStr: Swift.String) -&gt; ()"
+                  moduleName = "Cities"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/Cities/ViewModel/CitiesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2D17C56-BB31-4DBE-8B84-EB615302D679"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cities/ViewModel/CitiesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "searchCountryByText(searchStr:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A2D17C56-BB31-4DBE-8B84-EB615302D679 - 942c6c7d3ec4863f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cities.CitiesViewModel.searchCountryByText(searchStr: Swift.String) -&gt; ()"
+                  moduleName = "Cities"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/Cities/ViewModel/CitiesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "588">
+               </Location>
+               <Location
+                  uuid = "A2D17C56-BB31-4DBE-8B84-EB615302D679 - 233d07e967d81a53"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Cities.CitiesModel) -&gt; Swift.Bool in Cities.CitiesViewModel.searchCountryByText(searchStr: Swift.String) -&gt; ()"
+                  moduleName = "Cities"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/nidhi_hd/Nidhi/Documents/Interview/Akshit_finalRoundInterview/Cities_github/Cities/Cities/Cities/ViewModel/CitiesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C59E7A60-D484-4C69-981A-54A1C51FCD2B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "createCityArrList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "78B1E337-37B0-40F2-A367-35AC501D6F5F"
+            uuid = "B88C0673-5BD8-4EB1-BC40-A5B80625BDBE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "searchCitiesPerformanceExample()"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "filterCitiesWithValidSearchTest1()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B0178E31-DF58-498D-89D2-64ECBACCE7C5"
+            uuid = "ABC82FFC-BE19-4411-907D-882E4E314637"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "setUp()"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "searchCitiesPerformanceExample(searchStr:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DA0C57B5-FB91-4EB3-B6BE-9B2D94CE6714"
-            shouldBeEnabled = "No"
+            uuid = "04F17516-FC6D-4F2D-84C6-1AA79DB14C18"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "searchCitiesPerformanceExample()"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "searchCitiesPerformanceExample(searchStr:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C594A1A1-5B7B-4479-AF3C-9939734E8B3B"
-            shouldBeEnabled = "No"
+            uuid = "B1B1D129-80D9-47CB-BE43-762DE377BF2E"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "searchCitiesPerformanceExample(searchStr:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "24AD72CD-D37F-4EA1-A402-9552D6BE4D9B"
-            shouldBeEnabled = "No"
+            uuid = "E0CDB8E7-FD59-4414-83E9-798A269E6928"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "searchCitiesPerformanceExample(searchStr:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "19831D82-3340-45FA-962C-84BD72E33D96"
+            uuid = "80506B58-5F6F-45CF-9DD2-D3BC3E43F551"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CitiesTests/CitiesTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "testDecoding()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "406267E9-27C5-400D-BA29-1F13E0AB0315"
+            uuid = "197F46CD-C3AE-4D1D-905B-D122B8A688FA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CitiesTests/CitiesTests.swift"
+            filePath = "Cities/View/CitiesView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "432F6ECD-69F5-40EC-A42D-40EBD716B40B"
+            uuid = "1BE91694-D811-47D3-8CE0-0C4ED8A55F99"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CitiesTests/CitiesTests.swift"
+            filePath = "Cities/View/CitiesView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "binarySearch(inputArray:searchValue:)"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

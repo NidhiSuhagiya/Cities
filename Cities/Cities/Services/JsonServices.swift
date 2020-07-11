@@ -22,41 +22,39 @@ class JsonServices {
 //                }
                 completionHandler(jsonObj, nil)
             } catch {
-                print("error json:- \(error)")
-
-                print("error:- \(error.localizedDescription)")
+                PrintMessage.printToConsole(message: "error:- \(error.localizedDescription)")
                 completionHandler(nil, error.localizedDescription)
             }
         }
     }
     
-    static func fetchCitiesData(completionHandler: @escaping(() ->())) {
-
-        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
-            let pathURL = URL(fileURLWithPath: (NSString(string:path).expandingTildeInPath))
-            if FileManager.default.fileExists(atPath: pathURL.path) { print(1) }
-
-            do {
-                // Read an entire text file into an NSString.
-                let contents = try NSString(contentsOfFile: path,
-                    encoding: String.Encoding.ascii.rawValue)
-
-                // Print all lines.
-
-                contents.enumerateLines({ (line, stop) -> () in
-                    print("Line = \(line)")
-                })
-            } catch {
-                print("error:- \(error.localizedDescription)")
-            }
-//            let s = StreamReader(url: pathURL)
-//            for _ in 1...50 {
-//                if let line = s?.nextLine() {
-//                    print(line)
-//                }
+//    static func fetchCitiesData(completionHandler: @escaping(() ->())) {
+//
+//        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
+//            let pathURL = URL(fileURLWithPath: (NSString(string:path).expandingTildeInPath))
+//            if FileManager.default.fileExists(atPath: pathURL.path) { print(1) }
+//
+//            do {
+//                // Read an entire text file into an NSString.
+//                let contents = try NSString(contentsOfFile: path,
+//                    encoding: String.Encoding.ascii.rawValue)
+//
+//                // Print all lines.
+//
+//                contents.enumerateLines({ (line, stop) -> () in
+//                    print("Line = \(line)")
+//                })
+//            } catch {
+//                print("error:- \(error.localizedDescription)")
 //            }
-        }
-    }
+////            let s = StreamReader(url: pathURL)
+////            for _ in 1...50 {
+////                if let line = s?.nextLine() {
+////                    print(line)
+////                }
+////            }
+//        }
+//    }
 }
 
 
@@ -108,3 +106,11 @@ class JsonServices {
 //        } while true
 //    }
 //}
+
+struct PrintMessage {
+    static func printToConsole(message : String) {
+        #if DEBUG
+        print(message)
+        #endif
+    }
+}

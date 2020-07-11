@@ -23,13 +23,11 @@ class CityCell: UITableViewCell {
         return stackView
     }()
     
-     var cityData: CitiesModel? {
+    var cityData: CitiesModel? {
         didSet {
             guard let cityDetail = cityData else { return  }
             
-            if let country = cityDetail.country {
-                titleLbl.text = cityDetail.name + ", " + country
-            }
+            titleLbl.text = cityDetail.name + ", " + cityDetail.country
             if let coordinates = cityDetail.coord {
                 if let latitude = coordinates.lat, let long = coordinates.lon {
                     latLongLbl.text = "lat: \(latitude), long: \(long)"
@@ -51,10 +49,7 @@ class CityCell: UITableViewCell {
         self.selectionStyle = .none
         setTitleLbl()
         setLatLongLbl()
-        lblStackView.addArrangedSubview(titleLbl)
-        lblStackView.addArrangedSubview(latLongLbl)
-        self.contentView.addSubview(lblStackView)
-        self.setUpStackViewConstraints()
+        setupLblStackView()
     }
     
     func setTitleLbl() {
@@ -69,6 +64,12 @@ class CityCell: UITableViewCell {
         latLongLbl.textColor = UIColor.darkText
     }
     
+    func setupLblStackView() {
+        lblStackView.addArrangedSubview(titleLbl)
+        lblStackView.addArrangedSubview(latLongLbl)
+        self.contentView.addSubview(lblStackView)
+        self.setUpStackViewConstraints()
+    }
 }
 
 //#MARK:- Set up view's constraints
