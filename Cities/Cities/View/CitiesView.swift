@@ -10,14 +10,18 @@ import Foundation
 import UIKit
 
 protocol CityDelegate: class {
+    func searchVideo(searchStr: String)
     func displaySelectedCityOnMap(cityInfo: CitiesModel)
 }
 
 class CitiesView: UIView {
     
     var citiesArr = [CitiesModel]()
+    var searchCitiesArr = [CitiesModel]()
+
     weak var delegate: CityDelegate?
-    
+    var isSearch: Bool = false
+
     lazy var tableView: UITableView = {
         let table = UITableView()
         table.delegate = self
@@ -34,7 +38,7 @@ class CitiesView: UIView {
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.barStyle = .black
-        searchBar.tintColor = UIColor.black
+        searchBar.tintColor = UIColor.white
         searchBar.delegate = self
         return searchBar
     }()
@@ -58,6 +62,11 @@ class CitiesView: UIView {
     }
     
     func addSearchBar() {
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.textColor = UIColor.white
+            textField.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        }
+
         self.addSubview(searchBar)
         self.setUpSearchBarConstraints()
     }
@@ -93,7 +102,11 @@ extension CitiesView {
 extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return citiesArr.count
+        if isSearch {
+            return searchCitiesArr.count
+        } else {
+            return citiesArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -102,13 +115,14 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityCell
-        cell.cityData = citiesArr[indexPath.row]
+        cell.cityData = isSearch ? searchCitiesArr[indexPath.row] : citiesArr[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let currentDelegate = delegate {
-            currentDelegate.displaySelectedCityOnMap(cityInfo: citiesArr[indexPath.row])
+            let item = isSearch ? searchCitiesArr[indexPath.row] : citiesArr[indexPath.row]
+            currentDelegate.displaySelectedCityOnMap(cityInfo: item)
         }
     }
 }
@@ -116,11 +130,20 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
 extension CitiesView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Search text:- \(searchText)")
+        print("search text:- \(searchText)")
+        guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
+            self.isSearch = false
+            self.tableView.reloadData()
+            return
+        }
+        //Send notification to fetch video data according to a text enter by the user
+        if delegate != nil {
+            delegate?.searchVideo(searchStr: searchText)
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("Cancel pressed")
+        self.isSearch = false
+        self.tableView.reloadData()
     }
 }
-

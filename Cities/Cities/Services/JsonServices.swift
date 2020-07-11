@@ -10,18 +10,16 @@ import Foundation
 
 class JsonServices {
     
-    static func fetchCitiesList(completionHandler: @escaping(([CitiesModel]?, String?) ->())) {
+    final func fetchCitiesList(completionHandler: @escaping(([CitiesModel]?, String?) ->())) {
         if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
             do {
                 let fileUrl = URL(fileURLWithPath: path)
-                let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)// (contentsOf: fileUrl)
+                let data = try Data(contentsOf: fileUrl)// (contentsOf: fileUrl)
+                let jsonObj = try JSONDecoder().decode([CitiesModel].self, from: data)
 
 //                let temp = data.withUnsafeBytes {
 //                    return $0.split(separator: UInt8(ascii: "\n")).map { String(decoding: UnsafeRawBufferPointer(rebasing: $0), as: UTF8.self) }
 //                }
-
-                let jsonObj = try JSONDecoder().decode([CitiesModel].self, from: data)
-//                print("jsoobj:- \(jsonObj)")
                 completionHandler(jsonObj, nil)
             } catch {
                 print("error json:- \(error)")

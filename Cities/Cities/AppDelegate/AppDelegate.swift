@@ -14,11 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let homeVC = CitiesVC()
-        let nav = GlobalFunctions.setRootVC(vc: homeVC)
-        window?.rootViewController = nav
-        window?.makeKeyAndVisible()
+        
+        if #available(iOS 13.0, *) {
+            print("iOS version is above 13")
+        } else {
+            // Override point for customization after application launch.
+            let homeVC = CitiesVC()
+            let nav = GlobalFunctions.setRootVC(vc: homeVC)
+            window?.rootViewController = nav
+            window?.makeKeyAndVisible()
+        }
 
         return true
     }

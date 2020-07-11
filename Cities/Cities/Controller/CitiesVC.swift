@@ -9,20 +9,22 @@
 import UIKit
 
 class CitiesVC: UIViewController {
-
+    
     var nextStartRecord = 1
     var limit = 20
     
     var citiesView: CitiesView!
     var cityVM = CitiesViewModel()
+    private var previousRun = Date()
+    private let minInterval = 0.05
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         setNavBar()
         // Do any additional setup after loading the view.
-        fetchCitiesData()
         setUpMainView()
+        fetchCitiesData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,10 +42,11 @@ class CitiesVC: UIViewController {
         self.view.addSubview(citiesView)
         setUpMainViewConstraints()
     }
-
+    
     func fetchCitiesData() {
         cityVM.delegate = self
-        cityVM.fetchCityList()
+        cityVM.configView(view: self.citiesView)
+        //        cityVM.fetchCityList()
     }
 }
 
@@ -62,11 +65,24 @@ extension CitiesVC {
 //#MARK:- Fetch and display cities and error if failed
 extension CitiesVC: DisplayCityDelegate {
     
-    func displayCitiesData(cityArr: [CitiesModel]) {
-        self.citiesView.citiesArr = cityArr
-        self.citiesView.tableView.reloadData()
+    func searchVideo(searchStr: String) {
+        
+        if Date().timeIntervalSince(previousRun) > minInterval {
+            citiesView.isSearch = true
+            previousRun = Date()
+            print("interval:- \(Date().timeIntervalSince(previousRun))")
+            fetchSearchVideos(searchStr: searchStr)
+        }
     }
     
+    func fetchSearchVideos(searchStr: String) {
+        cityVM.searchCountryByText(searchStr: searchStr)
+    }
+    //
+    //    func displayCitiesData(cityArr: [CitiesModel]) {
+    //        cityVM.configView(view: self.citiesView)
+    //    }
+    //
     func sendErrorResponse(errorMessage: String, isError: Bool) {
         showErrorSuccessDialog(isError: isError, errorMessage: errorMessage, vc: self)
     }
@@ -84,7 +100,7 @@ extension CitiesVC: CityDelegate {
     func displaySelectedCityOnMap(cityInfo: CitiesModel) {
         let mapVC = CityMapVC()
         mapVC.cityDetail = cityInfo
-//        mapVC.modalPresentationStyle = .formSheet
+        //        mapVC.modalPresentationStyle = .formSheet
         
         self.navigationController?.pushViewController(mapVC, animated: true)
     }

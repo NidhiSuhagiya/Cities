@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct CitiesModel : Codable {
+struct CitiesModel : Decodable {
     let country : String?
     let name : String
     let _id : Int?
     let coord : Coord?
-
+    var fullCityAddr: String = ""
+    
     enum CodingKeys: String, CodingKey {
 
         case country = "country"
@@ -28,6 +29,8 @@ struct CitiesModel : Codable {
         name = try values.decodeIfPresent(String.self, forKey: .name) ?? ""
         _id = try values.decodeIfPresent(Int.self, forKey: ._id)
         coord = try values.decodeIfPresent(Coord.self, forKey: .coord)
+        
+        fullCityAddr = (name ?? "") + ", " + (country ?? "")
     }
 }
 
