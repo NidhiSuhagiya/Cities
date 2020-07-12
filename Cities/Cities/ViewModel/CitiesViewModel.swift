@@ -14,37 +14,33 @@ protocol DisplayCityDelegate: class {
 
 class CitiesViewModel {
     
+    private var previousRun = Date()
+    private let minInterval = 0.025
     weak var delegate: DisplayCityDelegate?
-    var countryView: CitiesView!
+    var citiesView: CitiesView!
     
     var citiesArr: [CitiesModel] = [] {
         didSet {
-            countryView.activityIndicator.stopAnimating()
-            countryView.searchBar.isUserInteractionEnabled = true
-            countryView.citiesArr = citiesArr
-            countryView.tableView.reloadData()
+            citiesView.citiesArr = citiesArr
         }
     }
     
     var searchCitiesArr: [CitiesModel] = [] {
         didSet {
-            countryView.activityIndicator.stopAnimating()
-            countryView.searchCitiesArr = searchCitiesArr
-            countryView.tableView.reloadData()
+            citiesView.searchCitiesArr = searchCitiesArr
         }
     }
     
-    func configView(view: CitiesView) {
-        self.countryView = view
+    final func configView(view: CitiesView) {
+        self.citiesView = view
         self.fetchCityList()
     }
     
     //   #MARK:- Read json to fetch city list
-    func fetchCityList() {
+    private final func fetchCityList() {
         DispatchQueue.global(qos: .background).async {
             JsonServices().fetchCitiesList { (citiesList, error) in
                 DispatchQueue.main.async {
-                    
                     guard let cityLists = citiesList else {
                         self.sendErrorMessage(str: error ?? "failed to fetch list of cities.", isError: true)
                         PrintMessage.printToConsole(message: "error :- \(error ?? "failed to fetch list of cities.")")
@@ -58,7 +54,7 @@ class CitiesViewModel {
     }
     
     //    func sortCityArr(cityArr: [CitiesModel]) {
-    //        //        TODO:- Reduce the excution time which is currently takes approx. 60 seconds to sort
+    //        //        TODO:- Reduce the excution time.
     //        //        let citiesList = cityArr.sorted { $0.name.lowercased() < $1.name.lowercased() }
     //
     //        //        let citiesList = cityArr.sorted { (country1, country2) -> Bool in
@@ -69,34 +65,9 @@ class CitiesViewModel {
     //    }
     
     //  notify controller to display error/success message to the user
-    func sendErrorMessage(str: String, isError: Bool) {
+    private func sendErrorMessage(str: String, isError: Bool) {
         if let resultDelegate = delegate {
             resultDelegate.sendErrorResponse(errorMessage: str, isError: isError)
-        }
-    }
-    
-    //#MARK:-    Search city by user input
-    final func searchCountryByText(searchStr: String) {
-        //        searchCitiesArr = citiesArr.filter {
-        //            $0.name.range(of: searchStr, options: .caseInsensitive) != nil
-        //        }
-        countryView.activityIndicator.startAnimating()
-        if (searchStr.count > 1) && !self.searchCitiesArr.isEmpty {
-            self.searchCitiesArr = self.searchCitiesArr.filter { (city) -> Bool in
-                self.checkValueExistinArray(city: city, searchStr: searchStr)
-            }
-        } else {
-            self.searchCitiesArr = self.citiesArr.filter { (city) -> Bool in
-                self.checkValueExistinArray(city: city, searchStr: searchStr)
-            }
-        }
-    }
-    
-    func checkValueExistinArray(city: CitiesModel, searchStr: String) -> Bool {
-        if city.name.lowercased().starts(with: searchStr.lowercased()) {
-            return city.name.lowercased().starts(with: searchStr.lowercased())
-        } else {
-            return city.country.lowercased().starts(with: searchStr.lowercased())
         }
     }
     
@@ -125,5 +96,39 @@ class CitiesViewModel {
         }
         sortCitiesByAlphbets(a: &a, start: start, end: r + 1)
         sortCitiesByAlphbets(a: &a, start: r + 1, end: end)
+    }
+    
+    //#MARK:-    Search city by user input
+    final func fetchSearchCity(searchStr: String) {
+        if Date().timeIntervalSince(previousRun) > minInterval {
+            citiesView.isSearch = true
+            previousRun = Date()
+            PrintMessage.printToConsole(message: "interval:- \(Date().timeIntervalSince(previousRun))")
+            self.searchCityByText(searchStr: searchStr)
+        }
+    }
+    
+    final func searchCityByText(searchStr: String) {
+        //        searchCitiesArr = citiesArr.filter {
+        //            $0.name.range(of: searchStr, options: .caseInsensitive) != nil
+        //        }
+        citiesView.activityIndicator.startAnimating()
+        if (searchStr.count > 1) && !self.searchCitiesArr.isEmpty {
+            self.searchCitiesArr = self.searchCitiesArr.filter { (city) -> Bool in
+                self.checkValueExistinArray(city: city, searchStr: searchStr)
+            }
+        } else {
+            self.searchCitiesArr = self.citiesArr.filter { (city) -> Bool in
+                self.checkValueExistinArray(city: city, searchStr: searchStr)
+            }
+        }
+    }
+    
+    private func checkValueExistinArray(city: CitiesModel, searchStr: String) -> Bool {
+        if city.name.lowercased().starts(with: searchStr.lowercased()) {
+            return city.name.lowercased().starts(with: searchStr.lowercased())
+        } else {
+            return city.country.lowercased().starts(with: searchStr.lowercased())
+        }
     }
 }

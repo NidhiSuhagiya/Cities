@@ -22,6 +22,7 @@
 		4C21089F24B7795000E688A0 /* JsonServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21089E24B7795000E688A0 /* JsonServices.swift */; };
 		4C2108A124B798B900E688A0 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2108A024B798B900E688A0 /* CityCell.swift */; };
 		4C2108A424B7AA0F00E688A0 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2108A324B7AA0F00E688A0 /* GlobalFunctions.swift */; };
+		4C511C6924BAE731003EA81F /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C511C6824BAE731003EA81F /* PrintMessage.swift */; };
 		4CD2201924B8DA630028AB66 /* CityMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2201824B8DA630028AB66 /* CityMapVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		4C21089E24B7795000E688A0 /* JsonServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonServices.swift; sourceTree = "<group>"; };
 		4C2108A024B798B900E688A0 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		4C2108A324B7AA0F00E688A0 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		4C511C6824BAE731003EA81F /* PrintMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintMessage.swift; sourceTree = "<group>"; };
 		4CD2201824B8DA630028AB66 /* CityMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMapVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2108A324B7AA0F00E688A0 /* GlobalFunctions.swift */,
+				4C511C6824BAE731003EA81F /* PrintMessage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				4C21089924B7730900E688A0 /* CitiesModel.swift in Sources */,
 				4C21086024B7726A00E688A0 /* SceneDelegate.swift in Sources */,
 				4C2108A424B7AA0F00E688A0 /* GlobalFunctions.swift in Sources */,
+				4C511C6924BAE731003EA81F /* PrintMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +554,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
 				INFOPLIST_FILE = Cities/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -559,7 +563,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -571,7 +575,7 @@
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = CPR2Y68PV8;
 				INFOPLIST_FILE = Cities/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,7 +584,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -14,10 +14,24 @@ protocol CityDelegate: class {
     func displaySelectedCityOnMap(cityInfo: CitiesModel)
 }
 
-class CitiesView: UIView {
+final class CitiesView: UIView {
     
-    var citiesArr = [CitiesModel]()
-    var searchCitiesArr = [CitiesModel]()
+    var citiesArr: [CitiesModel] = [] {
+        didSet {
+            self.activityIndicator.stopAnimating()
+            self.searchBar.isUserInteractionEnabled = true
+            self.noDataFoundLbl.isHidden = citiesArr.isEmpty ? false : true
+            self.tableView.reloadData()
+        }
+    }
+    
+    var searchCitiesArr: [CitiesModel] = [] {
+        didSet {
+            self.activityIndicator.stopAnimating()
+            self.noDataFoundLbl.isHidden = searchCitiesArr.isEmpty ? false : true
+            self.tableView.reloadData()
+        }
+    }
     
     lazy var activityIndicator: UIActivityIndicatorView = {
         let loadingIndicator = UIActivityIndicatorView()
@@ -74,15 +88,25 @@ class CitiesView: UIView {
         super.updateConstraints()
     }
     
-    func setUI() {
+    private func setUI() {
         self.addSearchBar()
         self.addTableView()
+        self.addNodataLbl()
         self.addSubview(activityIndicator)
         activityIndicator.center = self.center
-        self.addNodataLbl()
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.addGestureRecognizer(tap)
     }
     
-    func addSearchBar() {
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.endEditing(true)
+    }
+    
+    private func addSearchBar() {
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.textColor = UIColor.white
             textField.backgroundColor = UIColor.white.withAlphaComponent(0.5)
@@ -92,24 +116,25 @@ class CitiesView: UIView {
         self.setUpSearchBarConstraints()
     }
     
-    func addTableView() {
+    private func addTableView() {
         self.addSubview(tableView)
         tableView.contentInset = .zero
         self.setUpTableViewConstraints()
         tableView.register(CityCell.self, forCellReuseIdentifier: "cityCell")
     }
     
-//    TODO:- Resolve no data found issue
-    func addNodataLbl() {
-        self.addSubview(noDataFoundLbl)
-        noDataFoundLbl.center = self.center
+    private func addNodataLbl() {
+        tableView.backgroundView = noDataFoundLbl
+        noDataFoundLbl.isHidden = true
+        //        self.addSubview(noDataFoundLbl)
+        noDataFoundLbl.center = tableView.center
     }
 }
 
 //#MARK:- Set up view's constraints
 extension CitiesView {
     
-    func setUpSearchBarConstraints() {
+    private func setUpSearchBarConstraints() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         self.searchBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -117,7 +142,7 @@ extension CitiesView {
         self.searchBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    func setUpTableViewConstraints() {
+    private func setUpTableViewConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor).isActive = true
         self.tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -132,11 +157,9 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearch {
             tableView.separatorStyle = (searchCitiesArr.count > 0) ? .singleLine : .none
-            noDataFoundLbl.isHidden = searchCitiesArr.count > 0
             return searchCitiesArr.count
         } else {
             tableView.separatorStyle = (citiesArr.count > 0) ? .singleLine : .none
-            noDataFoundLbl.isHidden = citiesArr.count > 0
             return citiesArr.count
         }
     }
@@ -164,7 +187,11 @@ extension CitiesView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         PrintMessage.printToConsole(message: "search text:- \(searchText)")
-        guard let textToSearch = searchBar.text, !textToSearch.isEmpty else {
+        searchCity(searchText: searchBar.text)
+    }
+    
+    func searchCity(searchText: String?) {
+        guard let textToSearch = searchText, !textToSearch.isEmpty else {
             self.isSearch = false
             self.searchCitiesArr = []
             self.tableView.reloadData()
@@ -172,7 +199,7 @@ extension CitiesView: UISearchBarDelegate {
         }
         //Send notification to fetch video data according to a text enter by the user
         if delegate != nil {
-            delegate?.searchVideo(searchStr: searchText)
+            delegate?.searchVideo(searchStr: textToSearch)
         }
     }
     
@@ -181,5 +208,11 @@ extension CitiesView: UISearchBarDelegate {
         self.isSearch = false
         self.searchCitiesArr = []
         self.tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Send notification to fetch video data according to a text enter by the user
+        searchCity(searchText: searchBar.text)
+        self.endEditing(true)
     }
 }

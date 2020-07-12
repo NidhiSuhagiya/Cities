@@ -10,7 +10,7 @@ import XCTest
 @testable import Cities
 
 class CitiesTests: XCTestCase {
-
+    
     var citiesArr: [CitiesModel] = []
     var searchCitiesArr: [CitiesModel] = []
     
@@ -24,7 +24,7 @@ class CitiesTests: XCTestCase {
             PrintMessage.printToConsole(message: "reading json error:- \(error.localizedDescription)")
         }
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
@@ -34,16 +34,6 @@ class CitiesTests: XCTestCase {
     
     func testDecoding() throws {
         /// When the Data initializer is throwing an error, the test will fail.
-        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
-            do {
-                let fileUrl = URL(fileURLWithPath: path)
-                let jsonData = try Data(contentsOf: fileUrl)
-                /// The `XCTAssertNoThrow` can be used to get extra context about the throw
-                XCTAssertNoThrow(try JSONDecoder().decode([CitiesModel].self, from: jsonData))
-            } catch {
-                PrintMessage.printToConsole(message: "reading json error:- \(error.localizedDescription)")
-            }
-        }
     }
     
     func filterCitiesWithValidSearchTest1() {
@@ -60,7 +50,7 @@ class CitiesTests: XCTestCase {
         self.searchCitiesPerformanceExample(searchStr: "New york")
         XCTAssert(searchCitiesArr.count == 1, "Success")
     }
-
+    
     func filterCitiesWithValidSearchTest4() {
         self.searchCitiesPerformanceExample(searchStr: "Alb")
         XCTAssert(searchCitiesArr.count == 1, "Success")
@@ -86,42 +76,33 @@ class CitiesTests: XCTestCase {
         filterCitiesWithValidSearchTest5()
         
         filterCitiesWithInValidSearchTest()
-
-        
-        //TODO:- Remove it later on
-//        JsonServices().fetchCitiesList { (cities, error) in
-//            if let city = cities {
-//                self.citiesArr = city
-//                self.searchCitiesPerformanceExample(searchStr: "In")
-//            }
-//        }
     }
     
     func searchCitiesPerformanceExample(searchStr: String) {
-//        self.measure {
+        //        self.measure {
         searchCitiesArr.removeAll()
-                if (!self.searchCitiesArr.isEmpty) {
-                    self.searchCitiesArr = self.searchCitiesArr.filter { (city) -> Bool in
-                        if city.name.lowercased().starts(with: searchStr.lowercased()) {
-                            return city.name.lowercased().starts(with: searchStr.lowercased())
-                        } else {
-                            return city.country.lowercased().starts(with: searchStr.lowercased())
-                        }
-                    }
-                    PrintMessage.printToConsole(message: "Search city arr for text \(searchStr):- result is \(searchCitiesArr)")
+        if (!self.searchCitiesArr.isEmpty) {
+            self.searchCitiesArr = self.searchCitiesArr.filter { (city) -> Bool in
+                if city.name.lowercased().starts(with: searchStr.lowercased()) {
+                    return city.name.lowercased().starts(with: searchStr.lowercased())
                 } else {
-                    self.searchCitiesArr = self.citiesArr.filter {
-                        if $0.name.lowercased().starts(with: searchStr.lowercased()) {
-                            return $0.name.lowercased().starts(with: searchStr.lowercased())
-                        } else {
-                            return $0.country.lowercased().starts(with: searchStr.lowercased())
-                        }
-                    }
-                    PrintMessage.printToConsole(message: "Search city arr for text \(searchStr):- result is \(searchCitiesArr)")
+                    return city.country.lowercased().starts(with: searchStr.lowercased())
                 }
-//        }
+            }
+            PrintMessage.printToConsole(message: "Search city arr for text \(searchStr):- result is \(searchCitiesArr)")
+        } else {
+            self.searchCitiesArr = self.citiesArr.filter {
+                if $0.name.lowercased().starts(with: searchStr.lowercased()) {
+                    return $0.name.lowercased().starts(with: searchStr.lowercased())
+                } else {
+                    return $0.country.lowercased().starts(with: searchStr.lowercased())
+                }
+            }
+            PrintMessage.printToConsole(message: "Search city arr for text \(searchStr):- result is \(searchCitiesArr)")
+        }
+        //        }
     }
-
+    
     func createCityArrList() {
         let citiesCoord1 = Coord(lat: 21.17, lon: -72.83)
         let cityInfo1 = CitiesModel(country: "In", name: "Surat", _id: 1, coord: citiesCoord1)
@@ -135,18 +116,18 @@ class CitiesTests: XCTestCase {
         
         let cityInfo4 = CitiesModel(country: "US", name: "Arizona", _id: 4, coord: citiesCoord1)
         self.citiesArr.append(cityInfo4)
-
+        
         let cityInfo5 = CitiesModel(country: "US", name: "Anaheim", _id: 5, coord: citiesCoord1)
         self.citiesArr.append(cityInfo5)
         
         let cityInfo6 = CitiesModel(country: "US", name: "New york", _id: 6, coord: citiesCoord1)
         self.citiesArr.append(cityInfo6)
-
+        
         let cityInfo7 = CitiesModel(country: "US", name: "Alabama", _id: 7, coord: citiesCoord1)
         self.citiesArr.append(cityInfo7)
-
+        
         let cityInfo8 = CitiesModel(country: "US", name: "Alabama1", _id: 8, coord: citiesCoord1)
         self.citiesArr.append(cityInfo8)
-
-            }
+    }
 }
+

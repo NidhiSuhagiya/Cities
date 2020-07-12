@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GlobalFunctions {
+struct GlobalFunctions {
     
    static func setRootVC(vc: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: vc)

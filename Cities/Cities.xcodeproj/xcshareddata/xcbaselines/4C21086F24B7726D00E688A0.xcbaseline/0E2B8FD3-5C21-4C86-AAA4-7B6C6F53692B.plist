@@ -6,6 +6,16 @@
 	<dict>
 		<key>CitiesTests</key>
 		<dict>
+			<key>testDecoding()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>5.4605e-05</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
 			<key>testPerformanceExample()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>

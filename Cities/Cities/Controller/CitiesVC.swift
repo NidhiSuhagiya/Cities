@@ -15,25 +15,17 @@ class CitiesVC: UIViewController {
     
     var citiesView: CitiesView!
     var cityVM = CitiesViewModel()
-    private var previousRun = Date()
-    private let minInterval = 0.05
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         setNavBar()
-        // Do any additional setup after loading the view.
         setUpMainView()
         fetchCitiesData()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setUpMainViewConstraints()
-    }
-    
     func setNavBar() {
-        self.navigationItem.title = "Home"
+        self.navigationItem.title = "Cities"
     }
     
     func setUpMainView() {
@@ -54,35 +46,26 @@ class CitiesVC: UIViewController {
 extension CitiesVC {
     func setUpMainViewConstraints() {
         self.citiesView.translatesAutoresizingMaskIntoConstraints = false
-        self.citiesView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         self.citiesView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.citiesView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.citiesView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        if #available(iOS 11, *) {
+            let guide = view.safeAreaLayoutGuide
+            self.citiesView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+            self.citiesView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+        } else {
+            self.citiesView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            self.citiesView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        }
     }
 }
-
 
 //#MARK:- Fetch and display cities and error if failed
 extension CitiesVC: DisplayCityDelegate {
     
     func searchVideo(searchStr: String) {
-        
-        if Date().timeIntervalSince(previousRun) > minInterval {
-            citiesView.isSearch = true
-            previousRun = Date()
-            PrintMessage.printToConsole(message: "interval:- \(Date().timeIntervalSince(previousRun))")
-            fetchSearchVideos(searchStr: searchStr)
-        }
+        cityVM.fetchSearchCity(searchStr: searchStr)
     }
     
-    func fetchSearchVideos(searchStr: String) {
-        cityVM.searchCountryByText(searchStr: searchStr)
-    }
-    //
-    //    func displayCitiesData(cityArr: [CitiesModel]) {
-    //        cityVM.configView(view: self.citiesView)
-    //    }
-    //
     func sendErrorResponse(errorMessage: String, isError: Bool) {
         showErrorSuccessDialog(isError: isError, errorMessage: errorMessage, vc: self)
     }
@@ -92,16 +75,13 @@ extension CitiesVC: DisplayCityDelegate {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
-    
 }
 
-//#MARK:- Display city on map
+//#MARK:- Redirect to Map screen to display city on map
 extension CitiesVC: CityDelegate {
     func displaySelectedCityOnMap(cityInfo: CitiesModel) {
         let mapVC = CityMapVC()
         mapVC.cityDetail = cityInfo
-        //        mapVC.modalPresentationStyle = .formSheet
-        
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
 }
