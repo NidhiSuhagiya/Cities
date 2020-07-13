@@ -38,7 +38,6 @@ class CitiesVC: UIViewController {
     func fetchCitiesData() {
         cityVM.delegate = self
         cityVM.configView(view: self.citiesView)
-        //        cityVM.fetchCityList()
     }
 }
 

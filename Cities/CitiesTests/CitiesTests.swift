@@ -13,6 +13,7 @@ class CitiesTests: XCTestCase {
     
     var citiesArr: [CitiesModel] = []
     var searchCitiesArr: [CitiesModel] = []
+    var previousSearchStr = ""
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -63,7 +64,9 @@ class CitiesTests: XCTestCase {
     
     func filterCitiesWithInValidSearchTest() {
         self.searchCitiesPerformanceExample(searchStr: "12345")
-        XCTAssertFalse(searchCitiesArr.count != 0)
+//        XCTAssertFalse(searchCitiesArr.count != 0)
+        XCTAssert(searchCitiesArr.count == 0, "Success")
+
     }
     
     func testPerformanceExample() {
@@ -79,9 +82,9 @@ class CitiesTests: XCTestCase {
     }
     
     func searchCitiesPerformanceExample(searchStr: String) {
-        //        self.measure {
         searchCitiesArr.removeAll()
-        if (!self.searchCitiesArr.isEmpty) {
+        if ((self.previousSearchStr.count < searchStr.count) && !(self.searchCitiesArr.isEmpty)) {
+            self.previousSearchStr = searchStr
             self.searchCitiesArr = self.searchCitiesArr.filter { (city) -> Bool in
                 if city.name.lowercased().starts(with: searchStr.lowercased()) {
                     return city.name.lowercased().starts(with: searchStr.lowercased())
@@ -91,6 +94,7 @@ class CitiesTests: XCTestCase {
             }
             PrintMessage.printToConsole(message: "Search city arr for text \(searchStr):- result is \(searchCitiesArr)")
         } else {
+            self.previousSearchStr = searchStr
             self.searchCitiesArr = self.citiesArr.filter {
                 if $0.name.lowercased().starts(with: searchStr.lowercased()) {
                     return $0.name.lowercased().starts(with: searchStr.lowercased())
@@ -100,7 +104,6 @@ class CitiesTests: XCTestCase {
             }
             PrintMessage.printToConsole(message: "Search city arr for text \(searchStr):- result is \(searchCitiesArr)")
         }
-        //        }
     }
     
     func createCityArrList() {

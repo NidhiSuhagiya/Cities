@@ -16,6 +16,9 @@ protocol CityDelegate: class {
 
 final class CitiesView: UIView {
     
+    weak var delegate: CityDelegate?
+    var isSearch: Bool = false
+    
     var citiesArr: [CitiesModel] = [] {
         didSet {
             self.activityIndicator.stopAnimating()
@@ -42,9 +45,6 @@ final class CitiesView: UIView {
         return loadingIndicator
     }()
     
-    weak var delegate: CityDelegate?
-    var isSearch: Bool = false
-    
     lazy var noDataFoundLbl: UILabel = {
         let noDataLbl = UILabel()
         noDataLbl.text = "No data found."
@@ -55,14 +55,13 @@ final class CitiesView: UIView {
     
     lazy var tableView: UITableView = {
         let table = UITableView()
-        table.delegate = self
-        table.dataSource = self
         table.showsVerticalScrollIndicator = false
         table.showsHorizontalScrollIndicator = false
         table.separatorStyle = .none
         table.separatorInset = .zero
         table.separatorColor = UIColor.gray
-        table.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 10)
+        table.allowsSelection = true
+        table.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         return table
     }()
     
@@ -93,17 +92,7 @@ final class CitiesView: UIView {
         self.addTableView()
         self.addNodataLbl()
         self.addSubview(activityIndicator)
-        activityIndicator.center = self.center
-        
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        self.addGestureRecognizer(tap)
-    }
-    
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        self.endEditing(true)
+        self.setUpActivityIndicatorConstraints()
     }
     
     private func addSearchBar() {
@@ -117,8 +106,11 @@ final class CitiesView: UIView {
     }
     
     private func addTableView() {
-        self.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.contentInset = .zero
+        
+        self.addSubview(tableView)
         self.setUpTableViewConstraints()
         tableView.register(CityCell.self, forCellReuseIdentifier: "cityCell")
     }
@@ -149,6 +141,12 @@ extension CitiesView {
         self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         self.tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
+    
+    private func setUpActivityIndicatorConstraints() {
+        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        self.activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
 }
 
 //#MARK:- Tableview delegate and datasource methods
@@ -175,6 +173,7 @@ extension CitiesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.endEditing(true)
         if let currentDelegate = delegate {
             let item = isSearch ? searchCitiesArr[indexPath.row] : citiesArr[indexPath.row]
             currentDelegate.displaySelectedCityOnMap(cityInfo: item)

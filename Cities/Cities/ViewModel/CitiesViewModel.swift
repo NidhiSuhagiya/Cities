@@ -16,20 +16,10 @@ class CitiesViewModel {
     
     private var previousRun = Date()
     private let minInterval = 0.025
+    
     weak var delegate: DisplayCityDelegate?
     var citiesView: CitiesView!
-    
-    var citiesArr: [CitiesModel] = [] {
-        didSet {
-            citiesView.citiesArr = citiesArr
-        }
-    }
-    
-    var searchCitiesArr: [CitiesModel] = [] {
-        didSet {
-            citiesView.searchCitiesArr = searchCitiesArr
-        }
-    }
+    var previousSearchStr: String = ""
     
     final func configView(view: CitiesView) {
         self.citiesView = view
@@ -46,8 +36,8 @@ class CitiesViewModel {
                         PrintMessage.printToConsole(message: "error :- \(error ?? "failed to fetch list of cities.")")
                         return
                     }
-                    self.citiesArr = cityLists
-                    self.sortCitiesByAlphbets(a: &self.citiesArr, start: 0, end: self.citiesArr.count)
+                    self.citiesView.citiesArr = cityLists
+                    self.sortCitiesByAlphbets(a: &self.citiesView.citiesArr, start: 0, end: self.citiesView.citiesArr.count)
                 }
             }
         }
@@ -113,12 +103,14 @@ class CitiesViewModel {
         //            $0.name.range(of: searchStr, options: .caseInsensitive) != nil
         //        }
         citiesView.activityIndicator.startAnimating()
-        if (searchStr.count > 1) && !self.searchCitiesArr.isEmpty {
-            self.searchCitiesArr = self.searchCitiesArr.filter { (city) -> Bool in
+        if ((previousSearchStr.count < searchStr.count) && !(self.citiesView.searchCitiesArr.isEmpty)) {
+            self.previousSearchStr = searchStr
+            self.citiesView.searchCitiesArr = self.citiesView.searchCitiesArr.filter { (city) -> Bool in
                 self.checkValueExistinArray(city: city, searchStr: searchStr)
             }
         } else {
-            self.searchCitiesArr = self.citiesArr.filter { (city) -> Bool in
+            self.previousSearchStr = searchStr
+            self.citiesView.searchCitiesArr = self.citiesView.citiesArr.filter { (city) -> Bool in
                 self.checkValueExistinArray(city: city, searchStr: searchStr)
             }
         }
